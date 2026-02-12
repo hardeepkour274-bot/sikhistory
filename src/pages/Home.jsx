@@ -56,6 +56,7 @@ export default function Home() {
   const [index, setIndex] = useState(0);
   const [flash, setFlash] = useState(false);
   const [dailyThought, setDailyThought] = useState(getDailyThought());
+  const [showWelcome , setShowWelcome] = useState(false);
 
   /* ---------------- IMAGE CAROUSEL ---------------- */
   useEffect(() => {
@@ -68,8 +69,47 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const hasVisited = localStorage.getItem("hasVisited");
+
+    if(!hasVisited){
+      setShowWelcome(true);
+      localStorage.setItem("hasVisited", "true");
+    }
+  },[]);
+
   return (
     <section className="relative overflow-hidden">
+    {showWelcome && (
+  <motion.div
+    className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+  >
+    <motion.div
+      className="bg-white max-w-md w-full p-8 rounded-2xl shadow-2xl text-center"
+      initial={{ scale: 0.8, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ duration: 0.4 }}
+    >
+      <h2 className="text-2xl font-bold mb-4 text-navy">
+         Welcome to Sikh History
+      </h2>
+
+      <p className="text-gray-600 mb-6">
+        Explore the divine teachings, rich history, and spiritual wisdom of Sikh Gurus.
+      </p>
+
+      <button
+        onClick={() => setShowWelcome(false)}
+        className="px-6 py-2 bg-orange-500 text-white rounded-xl hover:bg-orange-600 transition"
+      >
+        Enter 
+      </button>
+    </motion.div>
+  </motion.div>
+)}
+
 
       {/* 🌌 BACKGROUND GLOW */}
       <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-white to-slate-100" />
