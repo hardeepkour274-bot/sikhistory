@@ -165,7 +165,7 @@ export default function Home() {
             variants={softFade}
           >
             <h3 className="text-xl font-semibold text-navy mb-3">
-              🌸 Thought of the Day
+              Thought of the Day
             </h3>
 
             <motion.p

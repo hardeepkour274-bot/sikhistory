@@ -12,6 +12,10 @@ import {
   Mail,
   Music,
   HomeIcon,
+  Target,
+  Eye,
+  Goal,
+  Sparkles,
 } from "lucide-react";
 
 /* ---------------- SIMPLE ANIMATIONS ---------------- */
@@ -217,7 +221,7 @@ const menuItems = [
       { to: "/nitnem/songs", label: "Songs", icon: Music },
     ],
   },
-  { to: "/purpose", label: "Purpose", icon: Mail },
+  { to: "/purpose", label: "Purpose", icon: Sparkles },
 ];
 
 /* ---------------- SUB COMPONENTS ---------------- */
